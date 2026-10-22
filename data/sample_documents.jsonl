@@ -1,0 +1,3 @@
+{"id":"ada_lovelace","title":"Ada Lovelace","text":"Ada Lovelace wrote extensive notes about Charles Babbage's Analytical Engine. Her notes included an algorithm intended to be carried out by the machine.","metadata":{"source":"demo"}}
+{"id":"charles_babbage","title":"Charles Babbage","text":"Charles Babbage designed the Analytical Engine, a proposed general-purpose mechanical computer. Ada Lovelace collaborated with Babbage by writing notes about the machine.","metadata":{"source":"demo"}}
+{"id":"grace_hopper","title":"Grace Hopper","text":"Grace Hopper was a computer scientist who helped develop early compilers. She was not involved in the Analytical Engine.","metadata":{"source":"demo"}}

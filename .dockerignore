@@ -1,0 +1,15 @@
+.git
+.gitignore
+.env
+.venv
+__pycache__
+**/__pycache__
+*.pyc
+artifacts
+data/raw
+data/normalized
+release-build*
+*.zip
+.cache
+models
+tests

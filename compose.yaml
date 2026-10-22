@@ -1,0 +1,15 @@
+services:
+  memory-api:
+    build: .
+    image: insightmem:0.1
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts
+      - huggingface-cache:/root/.cache/huggingface
+
+volumes:
+  huggingface-cache:
