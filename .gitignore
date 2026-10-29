@@ -10,3 +10,5 @@ artifacts/
 models/
 .pytest_cache/
 .coverage
+.DS_Store
+._*

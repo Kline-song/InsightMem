@@ -4,9 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "insightmem"
-version = "0.1"
+version = "0.2"
 description = "Synchronous coding-session memory service"
 requires-python = ">=3.10"
+license = {text = "MIT"}
 dependencies = [
     "fastapi>=0.115,<1",
     "httpx>=0.27,<1",

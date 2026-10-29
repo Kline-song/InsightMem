@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.10.12-slim
 
 WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -7,8 +7,8 @@ ENV PYTHONPATH=/app/src
 ENV MEMORY_DB_PATH=/app/artifacts/memory.db
 ENV CODING_CONFIG_PATH=/app/configs/coding/default.json
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements-api.txt constraints-api.txt ./
+RUN pip install --no-cache-dir -r requirements-api.txt -c constraints-api.txt
 
 COPY src ./src
 COPY configs ./configs

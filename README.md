@@ -4,7 +4,7 @@ InsightMem is a synchronous Agent Memory Leaderboard (AML) compatible memory
 service for coding-agent sessions. It stores every submitted message verbatim,
 indexes evidence at chunk level, and returns the most useful evidence for a
 query. Answers are produced by the evaluation platform; this service only
-performs Add and Search.
+performs Add and Search. Current release: `0.2`.
 
 ## What it does
 
@@ -27,7 +27,7 @@ Requires Python 3.10 or later. For the cloud embedding backend:
 ```bash
 python -m venv .venv
 . .venv/bin/activate
-pip install -r requirements-api.txt
+pip install -r requirements-api.txt -c constraints-api.txt
 cp .env.example .env
 ```
 
@@ -120,8 +120,11 @@ details and operational notes.
 docker compose up --build
 ```
 
-The image runs `uvicorn insightmem.api:app` with `PYTHONPATH=/app/src` and
-persists the database under `/app/artifacts`.
+The image installs the pinned API dependency set (`requirements-api.txt` with
+`constraints-api.txt`), runs `uvicorn insightmem.api:app` with
+`PYTHONPATH=/app/src` and persists the database under `/app/artifacts`. The
+local sentence-transformers backend is installed from `requirements.txt` in a
+virtual environment, not in this image.
 
 ## Tests
 
@@ -133,6 +136,13 @@ The suite covers lexical scoring, parsing and chunking, the assistant process
 filter, evidence merging and deduplication, the embedding client (with a mocked
 provider), the service round trip and the HTTP contract.
 
-## Third-party provenance
+## Operations
 
-See [NOTICE.md](NOTICE.md).
+Deployment parameters, logging, data retention and the purge procedure are in
+[docs/operations.md](docs/operations.md).
+
+## License and third-party provenance
+
+Original contributions are licensed under the MIT license in [LICENSE](LICENSE).
+Portions derived from third-party work are identified in [NOTICE.md](NOTICE.md)
+and are not relicensed by that file.
