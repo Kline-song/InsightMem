@@ -19,12 +19,22 @@ Official sources:
   more than the requested `top_k` (100 in formal external evaluations).
 
 `user_id` is the sole retrieval-isolation boundary. `session_id` identifies a
-source conversation but is not a Search filter. Add responses must echo
-`request_id`, `user_id`, and `session_id` exactly.
+source conversation but is not a Search filter. Add responses echo
+`request_id`, `user_id` and `session_id` exactly.
 
-The hosted API accepts `Authorization: Bearer`, `Authorization: Token`, or
+The hosted API accepts `Authorization: Bearer`, `Authorization: Token` or
 `X-Api-Key`. This implementation supports all three. Keep the configured key
 out of the repository and logs.
+
+## Error handling
+
+| Situation | Response |
+|---|---|
+| Missing service key configuration | `503` |
+| Missing or wrong service key | `401` |
+| Reused `request_id` with a different payload | `409` |
+| Invalid request body | `422` with field locations only |
+| Embedding provider unavailable or invalid | `503`, without provider text |
 
 ## Data handling
 
@@ -33,9 +43,5 @@ They must not be used for training, analytics, reconstruction, or sharing and
 must be deleted within 30 days after the run unless the organizer grants a
 different retention period in writing.
 
-## Local versus official results
-
-The scripts in this repository validate the public HTTP contract and replay
-normalized public benchmark data. They do not reproduce the private suite,
-locked Answer model, evaluator configuration, or official aggregate score.
-Only the organizer's Smoke and Full jobs are official.
+Stored messages are never modified or deleted by retrieval options; filtering
+is applied per query and is fully reversible.

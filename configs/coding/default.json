@@ -1,0 +1,9 @@
+{
+  "chunk_units": 320,
+  "overlap_units": 40,
+  "max_chunk_chars": 6000,
+  "rrf_k": 60,
+  "leg_max": 200,
+  "evidence_bundle_chars": 4000,
+  "evidence_max_chars": 12000
+}

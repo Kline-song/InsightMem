@@ -5,17 +5,13 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app/src
 ENV MEMORY_DB_PATH=/app/artifacts/memory.db
-ENV MEMORY_RETRIEVAL_MODE=enhanced
-ENV MEMORY_RRF_K=60
-ENV MEMORY_LEXICAL_WEIGHT=0.25
-ENV MEMORY_CONTEXT_MESSAGES=1
-ENV MEMORY_OPTION_VIEW_WEIGHT=0.2
+ENV CODING_CONFIG_PATH=/app/configs/coding/default.json
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY src ./src
-COPY data ./data
+COPY configs ./configs
 COPY scripts ./scripts
 
 RUN mkdir -p /app/artifacts
